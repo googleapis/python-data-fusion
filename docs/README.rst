@@ -1,7 +1,7 @@
 Python Client for Cloud Data Fusion
 ===================================
 
-|GA| |pypi| |versions|
+|beta| |pypi| |versions|
 
 `Cloud Data Fusion`_: helps users build scalable, distributed data lakes on Google Cloud by integrating 
 data from siloed on-premises platforms. 
@@ -9,7 +9,7 @@ data from siloed on-premises platforms.
 - `Client Library Documentation`_
 - `Product Documentation`_
 
-.. |GA| image:: https://img.shields.io/badge/support-ga-gold.svg
+.. |beta| image:: https://img.shields.io/badge/support-beta-gold.svg
    :target: https://github.com/googleapis/google-cloud-python/blob/master/README.rst#general-availability
 .. |pypi| image:: https://img.shields.io/pypi/v/google-cloud-data-fusion.svg
    :target: https://pypi.org/project/google-cloud-data-fusion/
@@ -26,12 +26,12 @@ In order to use this library, you first need to go through the following steps:
 
 1. `Select or create a Cloud Platform project.`_
 2. `Enable billing for your project.`_
-3. `Enable the Cloud Data Fusion.`_
+3. `Enable the Cloud Data Fusion API.`_
 4. `Setup Authentication.`_
 
 .. _Select or create a Cloud Platform project.: https://console.cloud.google.com/project
 .. _Enable billing for your project.: https://cloud.google.com/billing/docs/how-to/modify-project#enable_billing_for_a_project
-.. _Enable the Cloud Data Fusion.:  https://cloud.google.com/data-fusion/docs/quickstart#before-you-begin
+.. _Enable the Cloud Data Fusion API.:  https://cloud.google.com/data-fusion/docs/quickstart#before-you-begin
 .. _Setup Authentication.: https://googleapis.dev/python/google-api-core/latest/auth.html
 
 Installation
