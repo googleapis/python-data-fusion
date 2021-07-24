@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://www.github.com/googleapis/python-data-fusion/compare/v0.1.1...v0.2.0) (2021-07-24)
+
+
+### Features
+
+* add Samples section to CONTRIBUTING.rst ([#6](https://www.github.com/googleapis/python-data-fusion/issues/6)) ([f97a1a8](https://www.github.com/googleapis/python-data-fusion/commit/f97a1a8e7d7ffdac8cbf7c7364e5b6797f818e4d))
+
+
+### Bug Fixes
+
+* enable self signed jwt for grpc ([#10](https://www.github.com/googleapis/python-data-fusion/issues/10)) ([0ec8226](https://www.github.com/googleapis/python-data-fusion/commit/0ec82261f2c4fab58a2a52ec9d3c49d043598f2c))
+
 ### [0.1.1](https://www.github.com/googleapis/python-data-fusion/compare/v0.1.0...v0.1.1) (2021-07-21)
 
 
