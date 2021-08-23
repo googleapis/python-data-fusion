@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://www.github.com/googleapis/python-data-fusion/compare/v0.1.2...v0.2.0) (2021-08-23)
+
+
+### Features
+
+* bump release level to production/stable ([#14](https://www.github.com/googleapis/python-data-fusion/issues/14)) ([26f5506](https://www.github.com/googleapis/python-data-fusion/commit/26f5506b24453c6764f41637c18c6ceb10a9ba3c))
+
 ### [0.1.2](https://www.github.com/googleapis/python-data-fusion/compare/v0.1.1...v0.1.2) (2021-07-29)
 
 
