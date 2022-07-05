@@ -2768,7 +2768,6 @@ def test_data_fusion_transport_auth_adc(transport_class):
     [
         transports.DataFusionGrpcTransport,
         transports.DataFusionGrpcAsyncIOTransport,
-        transports.DataFusionRestTransport,
     ],
 )
 def test_data_fusion_transport_auth_gdch_credentials(transport_class):
