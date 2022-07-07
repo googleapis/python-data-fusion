@@ -3,7 +3,7 @@ Python Client for Cloud Data Fusion API
 
 |stable| |pypi| |versions|
 
-`Cloud Data Fusion API`_: 
+`Cloud Data Fusion API`_: is a fully managed, cloud-native, enterprise data integration service for quickly building and managing data pipelines.
 
 - `Client Library Documentation`_
 - `Product Documentation`_
