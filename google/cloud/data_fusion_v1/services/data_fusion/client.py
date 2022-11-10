@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 
 from google.api_core import client_options as client_options_lib
 from google.api_core import exceptions as core_exceptions
@@ -62,7 +73,7 @@ class DataFusionClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[DataFusionTransport]:
         """Returns an appropriate transport class.
 
@@ -364,7 +375,7 @@ class DataFusionClient(metaclass=DataFusionClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, DataFusionTransport, None] = None,
+        transport: Optional[Union[str, DataFusionTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -462,11 +473,11 @@ class DataFusionClient(metaclass=DataFusionClientMeta):
 
     def list_available_versions(
         self,
-        request: Union[datafusion.ListAvailableVersionsRequest, dict] = None,
+        request: Optional[Union[datafusion.ListAvailableVersionsRequest, dict]] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListAvailableVersionsPager:
         r"""Lists possible versions for Data Fusion instances in
@@ -580,10 +591,10 @@ class DataFusionClient(metaclass=DataFusionClientMeta):
 
     def list_instances(
         self,
-        request: Union[datafusion.ListInstancesRequest, dict] = None,
+        request: Optional[Union[datafusion.ListInstancesRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListInstancesPager:
         r"""Lists Data Fusion instances in the specified project
@@ -675,10 +686,10 @@ class DataFusionClient(metaclass=DataFusionClientMeta):
 
     def get_instance(
         self,
-        request: Union[datafusion.GetInstanceRequest, dict] = None,
+        request: Optional[Union[datafusion.GetInstanceRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> datafusion.Instance:
         r"""Gets details of a single Data Fusion instance.
@@ -754,13 +765,13 @@ class DataFusionClient(metaclass=DataFusionClientMeta):
 
     def create_instance(
         self,
-        request: Union[datafusion.CreateInstanceRequest, dict] = None,
+        request: Optional[Union[datafusion.CreateInstanceRequest, dict]] = None,
         *,
-        parent: str = None,
-        instance: datafusion.Instance = None,
-        instance_id: str = None,
+        parent: Optional[str] = None,
+        instance: Optional[datafusion.Instance] = None,
+        instance_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Creates a new Data Fusion instance in the specified
@@ -892,11 +903,11 @@ class DataFusionClient(metaclass=DataFusionClientMeta):
 
     def delete_instance(
         self,
-        request: Union[datafusion.DeleteInstanceRequest, dict] = None,
+        request: Optional[Union[datafusion.DeleteInstanceRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Deletes a single Date Fusion instance.
@@ -1017,12 +1028,12 @@ class DataFusionClient(metaclass=DataFusionClientMeta):
 
     def update_instance(
         self,
-        request: Union[datafusion.UpdateInstanceRequest, dict] = None,
+        request: Optional[Union[datafusion.UpdateInstanceRequest, dict]] = None,
         *,
-        instance: datafusion.Instance = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        instance: Optional[datafusion.Instance] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Updates a single Data Fusion instance.
@@ -1160,10 +1171,10 @@ class DataFusionClient(metaclass=DataFusionClientMeta):
 
     def restart_instance(
         self,
-        request: Union[datafusion.RestartInstanceRequest, dict] = None,
+        request: Optional[Union[datafusion.RestartInstanceRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Restart a single Data Fusion instance.
