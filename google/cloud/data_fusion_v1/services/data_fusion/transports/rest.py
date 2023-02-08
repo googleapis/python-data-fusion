@@ -14,25 +14,27 @@
 # limitations under the License.
 #
 
-from google.auth.transport.requests import AuthorizedSession  # type: ignore
-import json  # type: ignore
-import grpc  # type: ignore
-from google.auth.transport.grpc import SslCredentials  # type: ignore
-from google.auth import credentials as ga_credentials  # type: ignore
-from google.api_core import exceptions as core_exceptions
-from google.api_core import retry as retries
-from google.api_core import rest_helpers
-from google.api_core import rest_streaming
-from google.api_core import path_template
-from google.api_core import gapic_v1
-
-from google.protobuf import json_format
-from google.api_core import operations_v1
-from requests import __version__ as requests_version
 import dataclasses
+import json  # type: ignore
 import re
 from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
 import warnings
+
+from google.api_core import (
+    gapic_v1,
+    operations_v1,
+    path_template,
+    rest_helpers,
+    rest_streaming,
+)
+from google.api_core import exceptions as core_exceptions
+from google.api_core import retry as retries
+from google.auth import credentials as ga_credentials  # type: ignore
+from google.auth.transport.grpc import SslCredentials  # type: ignore
+from google.auth.transport.requests import AuthorizedSession  # type: ignore
+from google.protobuf import json_format
+import grpc  # type: ignore
+from requests import __version__ as requests_version
 
 try:
     OptionalRetry = Union[retries.Retry, gapic_v1.method._MethodDefault]
@@ -40,11 +42,12 @@ except AttributeError:  # pragma: NO COVER
     OptionalRetry = Union[retries.Retry, object]  # type: ignore
 
 
-from google.cloud.data_fusion_v1.types import datafusion
 from google.longrunning import operations_pb2  # type: ignore
 
-from .base import DataFusionTransport, DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from google.cloud.data_fusion_v1.types import datafusion
 
+from .base import DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from .base import DataFusionTransport
 
 DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
     gapic_version=BASE_DEFAULT_CLIENT_INFO.gapic_version,
@@ -129,7 +132,12 @@ class DataFusionRestInterceptor:
 
 
     """
-    def pre_create_instance(self, request: datafusion.CreateInstanceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[datafusion.CreateInstanceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_create_instance(
+        self,
+        request: datafusion.CreateInstanceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[datafusion.CreateInstanceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for create_instance
 
         Override in a subclass to manipulate the request or metadata
@@ -137,7 +145,9 @@ class DataFusionRestInterceptor:
         """
         return request, metadata
 
-    def post_create_instance(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_create_instance(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for create_instance
 
         Override in a subclass to manipulate the response
@@ -145,7 +155,12 @@ class DataFusionRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_delete_instance(self, request: datafusion.DeleteInstanceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[datafusion.DeleteInstanceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_delete_instance(
+        self,
+        request: datafusion.DeleteInstanceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[datafusion.DeleteInstanceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for delete_instance
 
         Override in a subclass to manipulate the request or metadata
@@ -153,7 +168,9 @@ class DataFusionRestInterceptor:
         """
         return request, metadata
 
-    def post_delete_instance(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_delete_instance(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for delete_instance
 
         Override in a subclass to manipulate the response
@@ -161,7 +178,12 @@ class DataFusionRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_instance(self, request: datafusion.GetInstanceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[datafusion.GetInstanceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_instance(
+        self,
+        request: datafusion.GetInstanceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[datafusion.GetInstanceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_instance
 
         Override in a subclass to manipulate the request or metadata
@@ -177,7 +199,12 @@ class DataFusionRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_available_versions(self, request: datafusion.ListAvailableVersionsRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[datafusion.ListAvailableVersionsRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_available_versions(
+        self,
+        request: datafusion.ListAvailableVersionsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[datafusion.ListAvailableVersionsRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_available_versions
 
         Override in a subclass to manipulate the request or metadata
@@ -185,7 +212,9 @@ class DataFusionRestInterceptor:
         """
         return request, metadata
 
-    def post_list_available_versions(self, response: datafusion.ListAvailableVersionsResponse) -> datafusion.ListAvailableVersionsResponse:
+    def post_list_available_versions(
+        self, response: datafusion.ListAvailableVersionsResponse
+    ) -> datafusion.ListAvailableVersionsResponse:
         """Post-rpc interceptor for list_available_versions
 
         Override in a subclass to manipulate the response
@@ -193,7 +222,12 @@ class DataFusionRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_instances(self, request: datafusion.ListInstancesRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[datafusion.ListInstancesRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_instances(
+        self,
+        request: datafusion.ListInstancesRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[datafusion.ListInstancesRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_instances
 
         Override in a subclass to manipulate the request or metadata
@@ -201,7 +235,9 @@ class DataFusionRestInterceptor:
         """
         return request, metadata
 
-    def post_list_instances(self, response: datafusion.ListInstancesResponse) -> datafusion.ListInstancesResponse:
+    def post_list_instances(
+        self, response: datafusion.ListInstancesResponse
+    ) -> datafusion.ListInstancesResponse:
         """Post-rpc interceptor for list_instances
 
         Override in a subclass to manipulate the response
@@ -209,7 +245,12 @@ class DataFusionRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_restart_instance(self, request: datafusion.RestartInstanceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[datafusion.RestartInstanceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_restart_instance(
+        self,
+        request: datafusion.RestartInstanceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[datafusion.RestartInstanceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for restart_instance
 
         Override in a subclass to manipulate the request or metadata
@@ -217,7 +258,9 @@ class DataFusionRestInterceptor:
         """
         return request, metadata
 
-    def post_restart_instance(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_restart_instance(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for restart_instance
 
         Override in a subclass to manipulate the response
@@ -225,7 +268,12 @@ class DataFusionRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_update_instance(self, request: datafusion.UpdateInstanceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[datafusion.UpdateInstanceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_update_instance(
+        self,
+        request: datafusion.UpdateInstanceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[datafusion.UpdateInstanceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for update_instance
 
         Override in a subclass to manipulate the request or metadata
@@ -233,7 +281,9 @@ class DataFusionRestInterceptor:
         """
         return request, metadata
 
-    def post_update_instance(self, response: operations_pb2.Operation) -> operations_pb2.Operation:
+    def post_update_instance(
+        self, response: operations_pb2.Operation
+    ) -> operations_pb2.Operation:
         """Post-rpc interceptor for update_instance
 
         Override in a subclass to manipulate the response
@@ -265,20 +315,21 @@ class DataFusionRestTransport(DataFusionTransport):
 
     """
 
-    def __init__(self, *,
-            host: str = 'datafusion.googleapis.com',
-            credentials: Optional[ga_credentials.Credentials] = None,
-            credentials_file: Optional[str] = None,
-            scopes: Optional[Sequence[str]] = None,
-            client_cert_source_for_mtls: Optional[Callable[[
-                ], Tuple[bytes, bytes]]] = None,
-            quota_project_id: Optional[str] = None,
-            client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
-            always_use_jwt_access: Optional[bool] = False,
-            url_scheme: str = 'https',
-            interceptor: Optional[DataFusionRestInterceptor] = None,
-            api_audience: Optional[str] = None,
-            ) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "datafusion.googleapis.com",
+        credentials: Optional[ga_credentials.Credentials] = None,
+        credentials_file: Optional[str] = None,
+        scopes: Optional[Sequence[str]] = None,
+        client_cert_source_for_mtls: Optional[Callable[[], Tuple[bytes, bytes]]] = None,
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+        always_use_jwt_access: Optional[bool] = False,
+        url_scheme: str = "https",
+        interceptor: Optional[DataFusionRestInterceptor] = None,
+        api_audience: Optional[str] = None,
+    ) -> None:
         """Instantiate the transport.
 
         Args:
@@ -317,7 +368,9 @@ class DataFusionRestTransport(DataFusionTransport):
         # credentials object
         maybe_url_match = re.match("^(?P<scheme>http(?:s)?://)?(?P<host>.*)$", host)
         if maybe_url_match is None:
-            raise ValueError(f"Unexpected hostname structure: {host}")  # pragma: NO COVER
+            raise ValueError(
+                f"Unexpected hostname structure: {host}"
+            )  # pragma: NO COVER
 
         url_match_items = maybe_url_match.groupdict()
 
@@ -328,10 +381,11 @@ class DataFusionRestTransport(DataFusionTransport):
             credentials=credentials,
             client_info=client_info,
             always_use_jwt_access=always_use_jwt_access,
-            api_audience=api_audience
+            api_audience=api_audience,
         )
         self._session = AuthorizedSession(
-            self._credentials, default_host=self.DEFAULT_HOST)
+            self._credentials, default_host=self.DEFAULT_HOST
+        )
         self._operations_client: Optional[operations_v1.AbstractOperationsClient] = None
         if client_cert_source_for_mtls:
             self._session.configure_mtls_channel(client_cert_source_for_mtls)
@@ -347,18 +401,20 @@ class DataFusionRestTransport(DataFusionTransport):
         """
         # Only create a new client if we do not already have one.
         if self._operations_client is None:
-            http_options: Dict[str, List[Dict[str, str]]] = {
-            }
+            http_options: Dict[str, List[Dict[str, str]]] = {}
 
             rest_transport = operations_v1.OperationsRestTransport(
-                    host=self._host,
-                    # use the credentials which are saved
-                    credentials=self._credentials,
-                    scopes=self._scopes,
-                    http_options=http_options,
-                    path_prefix="v1")
+                host=self._host,
+                # use the credentials which are saved
+                credentials=self._credentials,
+                scopes=self._scopes,
+                http_options=http_options,
+                path_prefix="v1",
+            )
 
-            self._operations_client = operations_v1.AbstractOperationsClient(transport=rest_transport)
+            self._operations_client = operations_v1.AbstractOperationsClient(
+                transport=rest_transport
+            )
 
         # Return the client from cache.
         return self._operations_client
@@ -367,19 +423,26 @@ class DataFusionRestTransport(DataFusionTransport):
         def __hash__(self):
             return hash("CreateInstance")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "instanceId" : "",        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "instanceId": "",
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: datafusion.CreateInstanceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: datafusion.CreateInstanceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the create instance method over HTTP.
 
             Args:
@@ -401,11 +464,12 @@ class DataFusionRestTransport(DataFusionTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{parent=projects/*/locations/*}/instances',
-                'body': 'instance',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*/locations/*}/instances",
+                    "body": "instance",
+                },
             ]
             request, metadata = self._interceptor.pre_create_instance(request, metadata)
             pb_request = datafusion.CreateInstanceRequest.pb(request)
@@ -414,33 +478,35 @@ class DataFusionRestTransport(DataFusionTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -457,19 +523,24 @@ class DataFusionRestTransport(DataFusionTransport):
         def __hash__(self):
             return hash("DeleteInstance")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: datafusion.DeleteInstanceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: datafusion.DeleteInstanceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the delete instance method over HTTP.
 
             Args:
@@ -491,37 +562,40 @@ class DataFusionRestTransport(DataFusionTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'delete',
-                'uri': '/v1/{name=projects/*/locations/*/instances/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "delete",
+                    "uri": "/v1/{name=projects/*/locations/*/instances/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_delete_instance(request, metadata)
             pb_request = datafusion.DeleteInstanceRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -538,19 +612,24 @@ class DataFusionRestTransport(DataFusionTransport):
         def __hash__(self):
             return hash("GetInstance")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: datafusion.GetInstanceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> datafusion.Instance:
+        def __call__(
+            self,
+            request: datafusion.GetInstanceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> datafusion.Instance:
             r"""Call the get instance method over HTTP.
 
             Args:
@@ -569,37 +648,40 @@ class DataFusionRestTransport(DataFusionTransport):
                     Represents a Data Fusion instance.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/locations/*/instances/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/locations/*/instances/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_instance(request, metadata)
             pb_request = datafusion.GetInstanceRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -618,19 +700,24 @@ class DataFusionRestTransport(DataFusionTransport):
         def __hash__(self):
             return hash("ListAvailableVersions")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: datafusion.ListAvailableVersionsRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> datafusion.ListAvailableVersionsResponse:
+        def __call__(
+            self,
+            request: datafusion.ListAvailableVersionsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> datafusion.ListAvailableVersionsResponse:
             r"""Call the list available versions method over HTTP.
 
             Args:
@@ -651,37 +738,42 @@ class DataFusionRestTransport(DataFusionTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{parent=projects/*/locations/*}/versions',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=projects/*/locations/*}/versions",
+                },
             ]
-            request, metadata = self._interceptor.pre_list_available_versions(request, metadata)
+            request, metadata = self._interceptor.pre_list_available_versions(
+                request, metadata
+            )
             pb_request = datafusion.ListAvailableVersionsRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -700,19 +792,24 @@ class DataFusionRestTransport(DataFusionTransport):
         def __hash__(self):
             return hash("ListInstances")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: datafusion.ListInstancesRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> datafusion.ListInstancesResponse:
+        def __call__(
+            self,
+            request: datafusion.ListInstancesRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> datafusion.ListInstancesResponse:
             r"""Call the list instances method over HTTP.
 
             Args:
@@ -733,37 +830,40 @@ class DataFusionRestTransport(DataFusionTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{parent=projects/*/locations/*}/instances',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=projects/*/locations/*}/instances",
+                },
             ]
             request, metadata = self._interceptor.pre_list_instances(request, metadata)
             pb_request = datafusion.ListInstancesRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -782,19 +882,24 @@ class DataFusionRestTransport(DataFusionTransport):
         def __hash__(self):
             return hash("RestartInstance")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: datafusion.RestartInstanceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: datafusion.RestartInstanceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the restart instance method over HTTP.
 
             Args:
@@ -816,46 +921,51 @@ class DataFusionRestTransport(DataFusionTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{name=projects/*/locations/*/instances/*}:restart',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{name=projects/*/locations/*/instances/*}:restart",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_restart_instance(request, metadata)
+            request, metadata = self._interceptor.pre_restart_instance(
+                request, metadata
+            )
             pb_request = datafusion.RestartInstanceRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -872,19 +982,24 @@ class DataFusionRestTransport(DataFusionTransport):
         def __hash__(self):
             return hash("UpdateInstance")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: datafusion.UpdateInstanceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> operations_pb2.Operation:
+        def __call__(
+            self,
+            request: datafusion.UpdateInstanceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> operations_pb2.Operation:
             r"""Call the update instance method over HTTP.
 
             Args:
@@ -909,11 +1024,12 @@ class DataFusionRestTransport(DataFusionTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'patch',
-                'uri': '/v1/{instance.name=projects/*/locations/*/instances/*}',
-                'body': 'instance',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "patch",
+                    "uri": "/v1/{instance.name=projects/*/locations/*/instances/*}",
+                    "body": "instance",
+                },
             ]
             request, metadata = self._interceptor.pre_update_instance(request, metadata)
             pb_request = datafusion.UpdateInstanceRequest.pb(request)
@@ -922,33 +1038,35 @@ class DataFusionRestTransport(DataFusionTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -962,60 +1080,63 @@ class DataFusionRestTransport(DataFusionTransport):
             return resp
 
     @property
-    def create_instance(self) -> Callable[
-            [datafusion.CreateInstanceRequest],
-            operations_pb2.Operation]:
+    def create_instance(
+        self,
+    ) -> Callable[[datafusion.CreateInstanceRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._CreateInstance(self._session, self._host, self._interceptor) # type: ignore
+        return self._CreateInstance(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def delete_instance(self) -> Callable[
-            [datafusion.DeleteInstanceRequest],
-            operations_pb2.Operation]:
+    def delete_instance(
+        self,
+    ) -> Callable[[datafusion.DeleteInstanceRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._DeleteInstance(self._session, self._host, self._interceptor) # type: ignore
+        return self._DeleteInstance(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_instance(self) -> Callable[
-            [datafusion.GetInstanceRequest],
-            datafusion.Instance]:
+    def get_instance(
+        self,
+    ) -> Callable[[datafusion.GetInstanceRequest], datafusion.Instance]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetInstance(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetInstance(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_available_versions(self) -> Callable[
-            [datafusion.ListAvailableVersionsRequest],
-            datafusion.ListAvailableVersionsResponse]:
+    def list_available_versions(
+        self,
+    ) -> Callable[
+        [datafusion.ListAvailableVersionsRequest],
+        datafusion.ListAvailableVersionsResponse,
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListAvailableVersions(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListAvailableVersions(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_instances(self) -> Callable[
-            [datafusion.ListInstancesRequest],
-            datafusion.ListInstancesResponse]:
+    def list_instances(
+        self,
+    ) -> Callable[[datafusion.ListInstancesRequest], datafusion.ListInstancesResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListInstances(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListInstances(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def restart_instance(self) -> Callable[
-            [datafusion.RestartInstanceRequest],
-            operations_pb2.Operation]:
+    def restart_instance(
+        self,
+    ) -> Callable[[datafusion.RestartInstanceRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._RestartInstance(self._session, self._host, self._interceptor) # type: ignore
+        return self._RestartInstance(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def update_instance(self) -> Callable[
-            [datafusion.UpdateInstanceRequest],
-            operations_pb2.Operation]:
+    def update_instance(
+        self,
+    ) -> Callable[[datafusion.UpdateInstanceRequest], operations_pb2.Operation]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._UpdateInstance(self._session, self._host, self._interceptor) # type: ignore
+        return self._UpdateInstance(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
     def kind(self) -> str:
@@ -1025,6 +1146,4 @@ class DataFusionRestTransport(DataFusionTransport):
         self._session.close()
 
 
-__all__=(
-    'DataFusionRestTransport',
-)
+__all__ = ("DataFusionRestTransport",)
